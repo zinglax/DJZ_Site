@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/umd/!svn/ver/173/trunk/djz_site/resume
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/umd/!svn/ver/173/trunk/djz_site/resume/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/umd/!svn/ver/173/trunk/djz_site/resume/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/umd/!svn/ver/173/trunk/djz_site/resume/models.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/umd/!svn/ver/174/trunk/djz_site/resume/views.py
+END
