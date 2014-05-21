@@ -2,8 +2,8 @@
 {% block content %}
 <body>
 
-<div data-role="page" id="pageone">
-  <div data-role="panel" id="myPanel" data-swipe-close="false"> 
+<div data-role="page" id="pageone" data-theme="b">
+  <div data-role="panel" id="myPanel" data-swipe-close="true" data-theme="a"> 
     <h2>Panel Header</h2>
     <p>This panel has the data-swipe-close attribute set to "false", which means that you cannot close the panel by swiping.
     <p>Close the panel by clicking outside of it or by pressing the Esc key.</p>
@@ -13,7 +13,7 @@
     <h1>Page Header</h1>
   </div>
 
-  <div data-role="main" class="ui-content">
+  <div data-role="main" class="ui-content" >
     <p>Click on the button below to open the Panel.</p>
     <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Open Panel</a>
   </div>
@@ -21,8 +21,7 @@
   <div data-role="footer">
     <h1>Page Footer</h1>
   </div> 
-</div>
-
+</div> 
 
 </body>
 
