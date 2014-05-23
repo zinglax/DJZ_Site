@@ -12,25 +12,33 @@
 
 <body>
 
-<div data-role="page" id="pageone" data-theme="a">
+<div data-role="page" id="home" data-theme="a">
+
+  <!-- Nav Panel -->
   <div data-role="panel" id="overlayPanel" data-display="overlay"> 
     <h2>Navigation</h2>    
-  
-  <p>Hello dumb head</p>  
+    <div data-role="controlgroup" data-type="vertical">
+      <p>Vertical group (default):</p>
+      <a href="https://www.google.com/" class="ui-btn">Button 1</a>
+      <a href="/mobilewebpractice" class="ui-btn">Mobile web Practice</a>
+      <a href="#" class="ui-btn">Button 3</a>
+    </div>  
+    
+    
   </div> 
 
-  
-  <div data-role="header">
+  <!-- Nav Header  -->
+  <div data-role="header" data-position="fixed" data-fullscreen="true">
   <a href="#overlayPanel" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="bars" data-iconpos="notext"></a>
-    <h1>Welcome to Dylans Site</h1>
-  </div>
-  
+  <a href="/" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="home" data-iconpos="notext"></a>
+    <h1>D. J. Z.</h1>
+  </div><br><br>
+
+{% block content %}
+{% endblock %}
   
 </div>
 
-
-   {% block content %}
-    {% endblock %}
 </body>
 
 </html>
