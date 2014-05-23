@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # Examples:
     #url(r'^$', include('dylansSITE.home.urls')),
     url(r'^$', 'home.views.home', name='home'),
+    url(r'^mobilewebpractice', 'home.views.mobilewebpractice',name='mobilewebpractice'),
     # url(r'^dylansSITE/', include('dylansSITE.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

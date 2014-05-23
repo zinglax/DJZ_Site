@@ -1,0 +1,42 @@
+{% extends "home/base.html" %}
+{% block content %}
+<body>
+
+<div data-role="page" id="pageone" data-theme="b">
+  <div data-role="panel" id="myPanel" data-swipe-close="true" data-theme="b"> 
+    <h2>Panel Header</h2>
+    <p>This panel has the data-swipe-close attribute set to "false", which means that you cannot close the panel by swiping.
+    <p>Close the panel by clicking outside of it or by pressing the Esc key.</p>
+  </div> 
+
+  <div data-role="header">
+    <h1>Page Header</h1>
+    <input type="file" accept="image/*" capture="camera" >
+  </div>
+
+  <div data-role="main" class="ui-content" >
+    <p>Click on the button below to open the Panel.</p>
+    <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Open Panel</a>
+  </div>
+
+  <div data-role="footer">
+    <h1>Page Footer <img src="{{ logo }}"></h1>
+    
+    <a href="#pagetwo">Go to Page Two</a>
+  </div>
+  
+  
+  
+</div> 
+
+<div data-role="page" id="pagetwo">
+  <div data-role="main" class="ui-content">
+    <a href="#pageone">Go to Page One</a>
+  </div>
+
+
+
+</body>
+
+
+{% endblock %}
