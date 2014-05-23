@@ -18,10 +18,11 @@
   <div data-role="panel" id="overlayPanel" data-display="overlay"> 
     <h2>Navigation</h2>    
     <div data-role="controlgroup" data-type="vertical">
-      <p>Vertical group (default):</p>
-      <a href="https://www.google.com/" class="ui-btn">Button 1</a>
-      <a href="/mobilewebpractice" class="ui-btn">Mobile web Practice</a>
-      <a href="#" class="ui-btn">Button 3</a>
+      
+      {% for page in pages %}
+      <a href="{{ page }}" class="ui-btn">{{ page }}</a>
+      {% endfor %}
+
     </div>  
     
     

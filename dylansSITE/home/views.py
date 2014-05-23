@@ -7,15 +7,15 @@ from models import *
 from django.conf import settings
 from dylansSITE.settings import PATH_TO_FILE
 
-def home(request):
-  
-  print PATH_TO_FILE + "/media/site_pictures/D.jpg"
+pages = ['resume','mobilewebpractice']
 
+def home(request):
+  print PATH_TO_FILE + "/media/site_pictures/D.jpg"
   logo = "/media/site_pictures/D.jpg"
-  
-  return render_to_response("home/home.html", {'logo':logo})
+  return render_to_response("home/home.html", {'logo':logo, 'pages':pages})
 
 def mobilewebpractice(request):
-  
-  
-  return render_to_response("home/mobilewebpractice.html", {})
+  return render_to_response("home/mobilewebpractice.html", {'pages':pages})
+
+def resume(request):
+  return render_to_response("home/resume.html",{'pages':pages})

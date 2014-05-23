@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     #url(r'^$', include('dylansSITE.home.urls')),
     url(r'^$', 'home.views.home', name='home'),
     url(r'^mobilewebpractice', 'home.views.mobilewebpractice',name='mobilewebpractice'),
+    url(r'^resume', 'home.views.resume',name='resume'),
     # url(r'^dylansSITE/', include('dylansSITE.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
