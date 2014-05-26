@@ -2,8 +2,13 @@
 {% block content %}
 
 
+{% load staticfiles %}
+<a href="{% static "ITresume.pdf" %}" >Hello resume</a>
+
 <p>This link will download a file</p>
-<a href="path_to_file" download="proposed_file_name">Download</a>
+<a href="/" download="ITresume.pdf">Download</a>
+<a href="../static/example.txt">Download CSV File</a> 
+download/ITresume.txt
 <!--
 <a href="path_to_file" download="dylanzingler_resmue.pdf">Download</a>
 -->
