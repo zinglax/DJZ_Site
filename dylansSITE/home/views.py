@@ -9,7 +9,9 @@ from models import *
 from django.conf import settings
 from dylansSITE.settings import PATH_TO_FILE
 
-pages = ['resume','mobilewebpractice']
+import storage.views as StorageViews
+
+pages = ['resume','mobilewebpractice', 'storage']
 
 def home(request):
   print PATH_TO_FILE + "/media/site_pictures/D.jpg"
@@ -31,3 +33,6 @@ def serve_pdf(request):
     response['X-Sendfile'] = "/media/ITresmue.pdf"
     
     return response
+  
+def storage(request):
+  return StorageViews.home(request);
