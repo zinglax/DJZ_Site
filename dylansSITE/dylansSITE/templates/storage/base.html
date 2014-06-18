@@ -16,54 +16,29 @@
 
 <div data-role="page" id="home" data-theme="a">
 
-  <!-- Nav Panel -->
-  <div data-role="panel" id="overlayPanel" data-display="overlay"> 
-    <h2>Navigation</h2>    
-    <div data-role="controlgroup" data-type="vertical">
-      <a href="/storage" class="ui-btn">Storage Home</a>
+   <!-- Nav Header  -->
+  <div data-role="header" data-position="fixed" data-fullscreen="true">  
+    <a href="/" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="home" data-iconpos="notext"></a>
 
-      {% for page in pages %}
-      <a href="{{ page }}" class="ui-btn">{{ page }}</a>
-      {% endfor %}
-
-    </div>  
-    
-    <!-- 
-    <h2>Links</h2>
-    
-    <div data-role="controlgroup" data-type="vertical">
-      <a href="https://www.linkedin.com/profile/view?id=266573023&trk=nav_responsive_tab_profile_pic" class="ui-btn">Linkedin</a>
-      <a href="https://github.com/zinglax" class="ui-btn">GitHub</a>
-      <a href="https://twitter.com/Zinglax" class="ui-btn">Twitter</a>
-      <a href="http://mobileappdevelopersclub.com/" class="ui-btn">M.A.D.</a>
-      <a href="https://www.facebook.com/dylan.zingler" class="ui-btn">Facebook</a>
-      <a href="https://plus.google.com/+DylanZingler/" class="ui-btn">Google+</a>
-
-
-    </div>
-    
-    
-    
-    
-    <script src="//platform.linkedin.com/in.js" type="text/javascript">
-  lang: en_US
-</script>
-<script type="IN/FollowCompany" data-id="266573023" data-counter="none"></script> 
-
--->
-    
-  </div> 
-
-  <!-- Nav Header  -->
-  <div data-role="header" data-position="fixed" data-fullscreen="true">
-  <a href="#overlayPanel" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="bars" data-iconpos="notext"></a>
-  <a href="/" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="home" data-iconpos="notext"></a>
     <h1>D. J. Z. Storage</h1>
   </div><br><br>
 
 {% block content %}
 {% endblock %}
+
+  <!-- Nav Footer  -->
+<br><br>
+  <div data-role="footer" data-position="fixed" data-fullscreen="true">
+  <a href="/storage" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Tag" data-iconpos="notext"></a>
+  <a href="/storage/search" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Search" data-iconpos="notext"></a>
+  <a href="/storage/add" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Plus" data-iconpos="notext"></a>
+  <a href="/storage/prints" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="action" data-iconpos="notext"></a>
+
   
+
+
+</div>
+
 </div>
 
 </body>

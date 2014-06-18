@@ -4,6 +4,23 @@
 # Wing IDE project file                                          #
 ##################################################################
 [project attributes]
+debug.launch-configs = (1,
+                        {'launch-x3GL68HPWgd0Jy9h': ({},
+        {'buildcmd': ('project',
+                      ('',
+                       '')),
+         'env': ('project',
+                 []),
+         'name': '',
+         'pyexec': ('project',
+                    ''),
+         'pypath': ('project',
+                    ''),
+         'pyrunargs': ('project',
+                       '-u'),
+         'runargs': 'runserver --noreload 8000',
+         'rundir': ('project',
+                    '')})})
 proj.directory-list = [{'dirloc': loc('dylansSITE'),
                         'excludes': (),
                         'filter': u'*',
@@ -11,4 +28,8 @@ proj.directory-list = [{'dirloc': loc('dylansSITE'),
                         'recursive': True,
                         'watch_for_changes': True}]
 proj.file-type = 'shared'
+proj.launch-config = {loc('dylansSITE/manage.py'): ('custom',
+        (u'',
+         'launch-x3GL68HPWgd0Jy9h'))}
 proj.main-file = loc('dylansSITE/manage.py')
+testing.test-framework = {loc('dylansSITE/manage.py'): ':internal djangotest'}
