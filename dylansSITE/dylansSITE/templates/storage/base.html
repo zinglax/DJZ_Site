@@ -12,9 +12,6 @@
 	
 </head>
 
-
-
-
 <body>
 
 <div data-role="page" id="home" data-theme="a">
@@ -23,7 +20,8 @@
   <div data-role="panel" id="overlayPanel" data-display="overlay"> 
     <h2>Navigation</h2>    
     <div data-role="controlgroup" data-type="vertical">
-      
+      <a href="/storage" class="ui-btn">Storage Home</a>
+
       {% for page in pages %}
       <a href="{{ page }}" class="ui-btn">{{ page }}</a>
       {% endfor %}

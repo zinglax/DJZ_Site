@@ -5,8 +5,14 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse, QueryDict
 
 # For Navigation
-pages = ['resume','mobilewebpractice', 'storage']
+pages = ['add','search']
 
 
-def home(request):
+def storage(request):
   return render_to_response("storage/home.html",{'pages':pages})
+
+def add(request):
+  return render_to_response("storage/add.html",{'pages':pages})
+
+def search(request):
+  return render_to_response("storage/search.html",{'pages':pages})

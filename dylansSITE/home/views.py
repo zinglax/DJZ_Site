@@ -35,4 +35,4 @@ def serve_pdf(request):
     return response
   
 def storage(request):
-  return StorageViews.home(request);
+  return StorageViews.storage(request);
