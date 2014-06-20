@@ -42,24 +42,15 @@
 
 
 <!-- NEW ITEM FORM -->
-<form action="/storage/add" method="post">
-<input type="text" name="name" id="name" placeholder="Item Name..." data-clear-btn="true">
-
-<textarea name="description" id="description" placeholder="Description..." ></textarea>
-
-
-		<input type="file" capture="camera" accept="image/*" id="takePictureField">
-        
-		<img id="yourimage" width="100" height="100">
-
-
-<input type="text" name="labeltext" id="labeltext" placeholder="Label Text... (Max 50 characters)" data-clear-btn="true">
-
-<label for="printlabel">Print Label</label>
-<input type="checkbox" name="favcolor" id="printlabel" value="printlabel">
-
-
-<input type="submit" data-inline="true" value="Add Item" data-icon="plus" data-iconpos="right">
+<form action="/storage/add" method="post">{% csrf_token %}
+	<input type="text" name="name" id="name" placeholder="Item Name..." data-clear-btn="true">
+	<textarea name="description" id="description" placeholder="Description..." ></textarea>
+	<input type="file" capture="camera" accept="image/*" id="takePictureField">
+	<img id="yourimage" width="100" height="100">
+	<input type="text" name="labeltext" id="labeltext" placeholder="Label Text... (Max 50 characters)" data-clear-btn="true">
+	<label for="printlabel">Print Label</label>
+	<input type="checkbox" name="printlabel" id="printlabel" value="printlabel">
+	<input type="submit" data-inline="true" value="Add Item" data-icon="plus" data-iconpos="right">
 </form>
 
 

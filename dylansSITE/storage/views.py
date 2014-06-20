@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse, QueryDict
 from forms import ItemForm
+from django.core.context_processors import csrf
 
 
 def storage(request):
@@ -11,17 +12,23 @@ def storage(request):
 
 def add(request):
   if request.POST:
-    form = ItemForm(request.POST)
-    if form.is_valid():
-      form.save()
-      return HttpResponseRedirect("storage/home.html")
-  else:
-    form = ItemForm()
     
+    print request.POST["name"]
+    print request.POST["description"]
+    print request.POST["labeltext"]
+    
+    print request.POST["printlabel"]
+    
+    print request.POST
+    
+    form = ItemForm(request.POST)
+    
+    return HttpResponseRedirect("storage/home.html")
+  else:
+    print 'this is not a post request'
+  
   args = {}
-  
-  args['form'] = form
-  
+  args.update(csrf(request))
   return render_to_response("storage/add.html",args)
 
 def search(request):

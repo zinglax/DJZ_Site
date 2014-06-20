@@ -41,9 +41,9 @@
 <br><br>
   <div data-role="footer" data-position="fixed" data-fullscreen="true">
   <a href="/storage" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Tag" data-iconpos="notext"></a>
-  <a href="/storage/search" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Search" data-iconpos="notext"></a>
-  <a href="/storage/add" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Plus" data-iconpos="notext"></a>
-  <a href="/storage/prints" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="action" data-iconpos="notext"></a>
+  <a href="{% url 'search' %}" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Search" data-iconpos="notext"></a>
+  <a href="{% url 'add' %}" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Plus" data-iconpos="notext"></a>
+  <a href="{% url 'prints' %}" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="action" data-iconpos="notext"></a>
   <a href="zxing://scan/?ret=http://foo.com/products/{CODE}/description&SCAN_FORMATS=UPC_A,EAN_13" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="camera" data-iconpos="notext"></a>
 
 
