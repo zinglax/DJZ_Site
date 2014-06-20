@@ -28,7 +28,7 @@ def search(request):
   return render_to_response("storage/search.html",{})
 
 def prints(request):
-  return render_to_response("storage/test.html",{})
+  return render_to_response("storage/prints.html",{})
 
 def item(request, item_id=1):
   
