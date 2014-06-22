@@ -8,24 +8,19 @@
         <p>I'm the expanded content.</p>
       
     <div data-role="collapsibleset">
+    
+      {% for item in areas %}    
+    
       <div data-role="collapsible">
-        <h3>Click me - I'm collapsible!</h3>
-        <p>I'm the expanded content.</p>
+        <h3><a href="#overlayPanel" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="info"> {{ item.name }}</a></h3>
+        
+        <p>{{ item.description }}</p>
       </div>
-      <div data-role="collapsible">
-        <h3>Click me - I'm collapsible!</h3>
-        <p>I'm the expanded content.</p>
-      </div>
-      <div data-role="collapsible">
-        <h3>Click me - I'm collapsible!</h3>
-        <p>I'm the expanded content.</p>
-      </div>
-      <div data-role="collapsible">
-        <h3>Click me - I'm collapsible!</h3>
-        <p>I'm the expanded content.</p>
-      </div>
+      
+      {% endfor %}
+      
     </div>
-    </div>
+  </div>
   </div>
 
 

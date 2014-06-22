@@ -10,6 +10,7 @@ class Item(models.Model):
     label_text = models.CharField(max_length=80, blank=True, null=True)
     needs_label = models.BooleanField()
     parent_item = models.ForeignKey('self', blank=True, null=True,on_delete=models.SET_NULL, )
+    is_area = models.BooleanField()
     
     def __unicode__(self):        
         return self.name    

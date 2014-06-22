@@ -1,13 +1,26 @@
 {% extends "storage/base.html" %}
 {% block content %}
 <h1> PRINTS <h1>
-<h3>Page Under Construction</h3>
-<body>
-TODO:
-<ul>
 
-</body>
-
+  <div data-role="main" class="ui-content">
+  <div data-role="collapsible">
+        <h3>Labels</h3>
+        <p>I'm the expanded content.</p>
+      
+    <div data-role="collapsibleset">
+    
+      {% for item in labels %}    
+    
+      <div data-role="collapsible">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+      
+      {% endfor %}
+      
+    </div>
+  </div>
+  </div>
 
 
 
