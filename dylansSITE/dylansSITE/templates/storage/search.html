@@ -5,14 +5,14 @@
   <div data-role="main" class="ui-content">
   <div data-role="collapsible">
         <h3>Areas</h3>
-        <p>I'm the expanded content.</p>
+        <p>Here are all of the Storage Areas</p>
       
     <div data-role="collapsibleset">
     
       {% for item in areas %}    
     
       <div data-role="collapsible">
-        <h3><a href="#overlayPanel" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="info"> {{ item.name }}</a></h3>
+        <h3>{{ item.name }}</h3>
         
         <p>{{ item.description }}</p>
       </div>

@@ -19,11 +19,14 @@ def add(request):
     I.name = info["name"]
     
     
-    if (request.POST.get('printlabel', False)):  
+    if (request.POST.get('description', False)):  
       I.description = info["description"]
       
     if (request.POST.get('printlabel', False)):  
       I.needs_label = True
+      
+    if (request.POST.get('isArea', False)):  
+          I.is_area = True    
       
     I.save()
     print I.description
@@ -36,8 +39,8 @@ def add(request):
   return render_to_response("storage/add.html",args)
 
 def search(request):
-  areas = Item.objects.all().filter(parent_item__isnull=True)
-  
+  #areas = Item.objects.all().filter(parent_item__isnull=True)
+  areas = Item.objects.all().filter(is_area=True)
   return render_to_response("storage/search.html",{'areas':areas})
 
 
