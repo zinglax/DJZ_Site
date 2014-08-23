@@ -67,4 +67,8 @@ def item(request, bar_code):
         return render_to_response("storage/item.html",{'item':item})
   
   
+def update(request):
+    
+    return render_to_response("storage/update.html",{})
+    
       

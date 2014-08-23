@@ -4,5 +4,6 @@ urlpatterns = patterns('storage.views',
     url(r'^$', 'storage', name=""),
     url(r'^add/(?P<bar_code>DJZ\d+)/$', 'add',name='add'),
     url(r'^search', 'search',name='search'),
+    url(r'^update', 'update',name='update'),    
     url(r'^(?P<bar_code>DJZ\d+)/$', 'item', name='item'),
 )
