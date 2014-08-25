@@ -12,7 +12,7 @@ urlpatterns = patterns('storage.views',
     
     # Update
     url(r'^update', 'update',name='update'),    
-    url(r'^update/(?P<bar_code>DJZ\d+)/', 'update_item',name='update_item'),    
+    url(r'^u/(?P<bar_code>DJZ\d+)/', 'update_item',name='update_item'),    
 
     # Item
     url(r'^(?P<bar_code>DJZ\d+)/$', 'item', name='item'),

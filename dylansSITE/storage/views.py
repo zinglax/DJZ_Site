@@ -36,23 +36,32 @@ def update(request):
     if (qr == ''):
         return render_to_response("storage/update.html",script_args)
     else:
-        response = HttpResponse("", status=302)
-        response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/update/' + qr + "/"
+        return redirect('/storage/u/' + qr + "/")
         
-        return response  
+        #response = HttpResponse("", status=302)
+        #response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/update/' + qr + "/" 
+        #return response  
     
 def update_item(request, bar_code):
     qr = request.GET.get('qr', '')
     
+    print "#### ITEM UPDATING: " + bar_code
+    print "#### SCANNED CODE: " + qr
+    
+    # Nothing scanned
+    if (qr == ''):
+        response = HttpResponse("", status=302)
+        response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/u/' + bar_code + "/"       
+        return response  
+    
     # Barcode scanned is the same as the parent (STOP SCANNING)
-    if (qr == bar_code):
+    elif (qr == bar_code):
         return render_to_response("storage/update.html",script_args)
     
     # Barcode scanned is not the same as the parent (UPDATE & CONTINUE SCANNING)
     else:
         response = HttpResponse("", status=302)
-        response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/update/' + bar_code + "/"
-        
+        response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/u/' + bar_code + "/"       
         return response  
     
         
