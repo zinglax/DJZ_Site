@@ -9,6 +9,10 @@ from django.core.context_processors import csrf
 from django.shortcuts import redirect
 from dylansSITE.settings import STATIC_ROOT
 
+# passed into page responses used for static variables that might change in the future such as the site address
+script_args = {}
+script_args['site_url'] = 'http%3A//192.168.1.17:8001'
+
 def get_or_none(model, **kwargs):
     # Gets object or returns none if not found
     # EX. foo = get_or_none(Item, barcode=DJZ48)
@@ -21,9 +25,36 @@ def storage(request):
     qr = request.GET.get('qr', '')
     
     if (qr == ''):
-        return render_to_response("storage/home.html",{})
+        return render_to_response("storage/home.html",script_args)
     else:
         return redirect('/storage/' + qr + "/")
+
+
+def update(request):
+    qr = request.GET.get('qr', '')
+    
+    if (qr == ''):
+        return render_to_response("storage/update.html",script_args)
+    else:
+        response = HttpResponse("", status=302)
+        response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/update/' + qr + "/"
+        
+        return response  
+    
+def update_item(request, bar_code):
+    qr = request.GET.get('qr', '')
+    
+    # Barcode scanned is the same as the parent (STOP SCANNING)
+    if (qr == bar_code):
+        return render_to_response("storage/update.html",script_args)
+    
+    # Barcode scanned is not the same as the parent (UPDATE & CONTINUE SCANNING)
+    else:
+        response = HttpResponse("", status=302)
+        response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/update/' + bar_code + "/"
+        
+        return response  
+    
         
 
 def add(request, bar_code):
@@ -37,8 +68,9 @@ def add(request, bar_code):
         I.description = info["description"]
       I.save()
       
+      script_args['item'] = I
           
-      return render_to_response("storage/item.html",{'item':I})
+      return render_to_response("storage/item.html",script_args)
     else:
       print 'this is not a post request'
     
@@ -50,12 +82,14 @@ def add(request, bar_code):
         args.update(csrf(request))
         return render_to_response("storage/add.html",args)
     else:
-        return render_to_response("storage/item.html",{'item':item})        
+        script_args['item'] = item
+        
+        return render_to_response("storage/item.html",script_args)        
 
 def search(request):
     #areas = Item.objects.all().filter(parent_item__isnull=True)
-    areas = Item.objects.all()
-    return render_to_response("storage/search.html",{'areas':areas})
+    script_args['areas'] = Item.objects.all()
+    return render_to_response("storage/search.html",script_args)
 
 def item(request, bar_code):
     item = get_or_none(Item, barcode=bar_code)
@@ -64,11 +98,7 @@ def item(request, bar_code):
         return redirect('/storage/add/' + bar_code + "/")
         #return render_to_response("storage/add.html",{})
     else:
-        return render_to_response("storage/item.html",{'item':item})
+        script_args['item'] = item        
+        return render_to_response("storage/item.html",script_args)
   
   
-def update(request):
-    
-    return render_to_response("storage/update.html",{})
-    
-      
