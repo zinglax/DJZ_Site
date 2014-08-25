@@ -1,7 +1,46 @@
 {% extends "storage/base.html" %}
 {% block content %}
 
-<h1>Item: {{ item.name }}<h1>
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
+<h1>{{ item.name }}</h1>
 <p>{{ item.description }}</p>
+</div>
+
+</br>
+
+
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
+<h2>Contains items</h2>
+    <div data-role="collapsibleset">
+    
+      {% for child in children %}    
+    
+      <div data-role="collapsible">
+        <h3>{{ child.name }}</h3>
+        
+        <p>{{ child.description }}</p>
+      </div>
+      
+      {% endfor %}
+      
+    </div>
+</div>
+
+</br>
+
+  <div data-role="main" class="ui-content">
+    <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Update Item Info</a>
+
+    <div data-role="popup" id="myPopup" class="ui-content">
+      <!-- ITEM FORM -->
+<form action="/storage/{{ item.barcode }}/" method="post" enctype="multipart/form-data">{% csrf_token %}
+	<input type="text" name="name" id="name" value="{{ item.name }}" data-clear-btn="true">
+	<textarea name="description" id="description">{{ item.description }}</textarea>
+	
+	<input type="submit" data-inline="true" value="Update Item" data-icon="plus" data-iconpos="right">
+</form>
+    </div>
+  </div>
+
 
 {% endblock %}

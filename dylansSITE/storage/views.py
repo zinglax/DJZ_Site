@@ -13,6 +13,9 @@ from dylansSITE.settings import STATIC_ROOT
 script_args = {}
 script_args['site_url'] = 'http%3A//192.168.1.17:8001'
 
+# CSS them for the site
+script_args['theme'] = 'a'
+
 def get_or_none(model, **kwargs):
     # Gets object or returns none if not found
     # EX. foo = get_or_none(Item, barcode=DJZ48)
@@ -22,27 +25,39 @@ def get_or_none(model, **kwargs):
         return None
     
 def storage(request):   
+    # Gets the qrcode value    
     qr = request.GET.get('qr', '')
     
+    # Nothing Scanned
     if (qr == ''):
         return render_to_response("storage/home.html",script_args)
+    
+    # Redirects to the items page
     else:
         return redirect('/storage/' + qr + "/")
 
-
 def update(request):
+    # Gets the qrcode value    
     qr = request.GET.get('qr', '')
     
+    # Nothing Scanned    
     if (qr == ''):
         return render_to_response("storage/update.html",script_args)
+    
+    # Redirect to the items update mode
     else:
         return redirect('/storage/u/' + qr + "/")
-        
-        #response = HttpResponse("", status=302)
-        #response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/update/' + qr + "/" 
-        #return response  
     
 def update_item(request, bar_code):
+    
+    # gets the parent item
+    parent_item = get_or_none(Item, barcode=bar_code)
+    
+    # If parent item is not in system got to the add process
+    if (parent_item == None):     
+            return redirect('/storage/add/' + bar_code + "/")    
+    
+    # Gets the qrcode value
     qr = request.GET.get('qr', '')
     
     print "#### ITEM UPDATING: " + bar_code
@@ -50,6 +65,7 @@ def update_item(request, bar_code):
     
     # Nothing scanned
     if (qr == ''):
+        # Loads barcode scanning app
         response = HttpResponse("", status=302)
         response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/u/' + bar_code + "/"       
         return response  
@@ -60,6 +76,18 @@ def update_item(request, bar_code):
     
     # Barcode scanned is not the same as the parent (UPDATE & CONTINUE SCANNING)
     else:
+        # Gets the scanned item
+        item = get_or_none(Item, barcode=qr)        
+        
+        # if the scanned item does not exist redirect to add page
+        if (item == None):     
+                return redirect('/storage/add/' + qr + "/")    
+        
+        # Updates the scanned items parent 
+        item.parent = parent_item
+        item.save()
+        
+        # Loads Barcode scanning app again for the next barcode to be scanned
         response = HttpResponse("", status=302)
         response['Location'] = 'pic2shop://scan?callback='+ script_args['site_url'] + '/storage/u/' + bar_code + "/"       
         return response  
@@ -69,30 +97,36 @@ def update_item(request, bar_code):
 def add(request, bar_code):
     print '### BARCODE IS: ' + bar_code
     if request.POST:
-      I = Item()
-      info = request.POST
-      I.name = info["name"]
-      I.barcode = bar_code
-      if (request.POST.get('description', False)):  
-        I.description = info["description"]
-      I.save()
-      
-      script_args['item'] = I
-          
-      return render_to_response("storage/item.html",script_args)
+        
+        # Creating item object from form values
+        I = Item()
+        info = request.POST
+        I.name = info["name"]
+        I.barcode = bar_code
+        if (request.POST.get('description', False)):  
+            I.description = info["description"]
+        I.save()
+        
+        script_args['item'] = I
+        
+        # Goes to item page
+        return render_to_response("storage/item.html",script_args)
     else:
-      print 'this is not a post request'
+        print 'this is not a post request'
     
     
     item = get_or_none(Item, barcode=bar_code)
+    
+    # Item does not exist go to the add page
     if (item == None):
-        args = {}
-        args['barcode'] = bar_code
-        args.update(csrf(request))
-        return render_to_response("storage/add.html",args)
+        
+        script_args['barcode'] = bar_code
+        script_args.update(csrf(request))
+        return render_to_response("storage/add.html",script_args)
+    
+    # Item already exists, goes to item page
     else:
         script_args['item'] = item
-        
         return render_to_response("storage/item.html",script_args)        
 
 def search(request):
@@ -101,13 +135,28 @@ def search(request):
     return render_to_response("storage/search.html",script_args)
 
 def item(request, bar_code):
+    # Gets the item associated with the specific barcode
     item = get_or_none(Item, barcode=bar_code)
+    
+    # The item does not exist yet, goes to the add page
     if (item == None):
-        
         return redirect('/storage/add/' + bar_code + "/")
-        #return render_to_response("storage/add.html",{})
+    # Go to the specific items page
     else:
-        script_args['item'] = item        
+        
+        if request.POST:
+            info = request.POST
+            item.name = info["name"]
+            if (request.POST.get('description', False)):  
+                item.description = info["description"]
+            item.save()            
+            return redirect('/storage/' + bar_code + "/")
+        
+        
+        script_args['children'] = Item.objects.filter(parent=item)
+        
+        script_args['item'] = item
+        script_args.update(csrf(request))        
         return render_to_response("storage/item.html",script_args)
   
   
