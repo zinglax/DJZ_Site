@@ -31,6 +31,7 @@
 
   <div data-role="main" class="ui-content">
     <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Update Item Info</a>
+    <a href="#delete" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Delete Item</a>
 
     <div data-role="popup" id="myPopup" class="ui-content">
       <!-- ITEM FORM -->
@@ -41,6 +42,23 @@
 	<input type="submit" data-inline="true" value="Update Item" data-icon="plus" data-iconpos="right">
 </form>
     </div>
+    
+    
+<div data-role="popup" id="delete" class="ui-content">
+      <!-- delete -->
+<form method="get" action="/storage/{{ item.barcode }}/">
+      <fieldset data-role="controlgroup">
+      <legend>Are You Sure You Want To Delete This?</legend>
+        <label for="yes">Yes</label>
+        <input type="radio" name="yesno" id="yes" value="yes">
+        <label for="no">No</label>
+        <input type="radio" name="yesno" id="no" value="no">	
+      </fieldset>
+        <input type="submit" data-inline="true" value="Submit">
+    </form>
+    </div>    
+    
+    
   </div>
 
 

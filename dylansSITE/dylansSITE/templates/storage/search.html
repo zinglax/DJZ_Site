@@ -1,11 +1,11 @@
 {% extends "storage/base.html" %}
 {% block content %}
 
-<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow ">
 <h1>Search<h1>
 
     <form method="get" action="/storage/search/">
-      <div class="ui-field-contain">
+      <div class="ui-field-contain ui-mini">
         <input type="search" name="search" id="search" placeholder="Search for content...">
       </div>
       <input type="submit" data-inline="true" value="Submit">
@@ -20,7 +20,7 @@
 <div data-role="collapsible">
   <h3>{{ result.name }}</h3>
   <p>{{ result.description }}</p>
-  <a href="/storage/{{ result.barcode }}" class="ui-btn ui-icon-forward ui-corner-all ui-btn-icon-notext">Go To Page</a>
+  <a href="/storage/{{ result.barcode }}/" class="ui-btn ui-icon-forward ui-corner-all ui-btn-icon-notext">Go To Page</a>
   
   
 </div>
@@ -47,7 +47,7 @@
         <h3>{{ item.name }}</h3>
         
         <p>{{ item.description }}</p>
-        <a href="/storage/{{ item.barcode }}" class="ui-btn ui-icon-forward ui-corner-all ui-btn-icon-notext">Go To Page</a>
+        <a href="/storage/{{ item.barcode }}/" class="ui-btn ui-icon-forward ui-corner-all ui-btn-icon-notext">Go To Page</a>
 
       </div>
       

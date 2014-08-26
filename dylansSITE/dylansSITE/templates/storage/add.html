@@ -1,5 +1,8 @@
 {% extends "storage/base.html" %}
 {% block content %}
+
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow ui-mini">
+
 <h1>Add<h1>
 
 
@@ -10,5 +13,7 @@
 	
 	<input type="submit" data-inline="true" value="Add Item" data-icon="plus" data-iconpos="right">
 </form>
+
+</div>
 
 {% endblock %}

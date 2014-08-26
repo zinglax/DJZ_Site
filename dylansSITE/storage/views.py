@@ -74,7 +74,7 @@ def update_item(request, bar_code):
     
     # Barcode scanned is the same as the parent (STOP SCANNING)
     elif (qr == bar_code):
-        return render_to_response("storage/update.html",script_args)
+        return render_to_response("storage/search.html",script_args)
     
     # Barcode scanned is not the same as the parent (UPDATE & CONTINUE SCANNING)
     else:
@@ -155,6 +155,24 @@ def item(request, bar_code):
     # Go to the specific items page
     else:
         
+        # Used For Deletion
+        if request.GET:
+            yesno = request.GET["yesno"]
+            if yesno == 'yes':
+                
+                children = Item.objects.all().filter(parent=item)
+                for child in children:
+                    child.parent = None
+                    
+                item.delete()
+                
+                
+                return render_to_response("storage/home.html",script_args)
+            else:
+                return redirect('/storage/' + bar_code + "/")
+                
+        
+        # Used For updating
         if request.POST:
             info = request.POST
             item.name = info["name"]
