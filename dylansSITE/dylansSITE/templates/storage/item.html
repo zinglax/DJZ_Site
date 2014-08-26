@@ -4,6 +4,18 @@
 <div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
 <h1>{{ item.name }}</h1>
 <p>{{ item.description }}</p>
+
+{% if item.parent %}
+<h3>Contained In</h3>
+<div data-role="collapsible">
+        <h3>{{ item.parent.name }}</h3>
+        
+        <p>{{ item.parent.description }}</p>
+	<a href="/storage/{{ item.parent.barcode }}" class="ui-btn ui-icon-forward ui-corner-all ui-btn-icon-notext">Go To Page</a>
+      </div>
+{% endif %}
+
+
 </div>
 
 </br>
