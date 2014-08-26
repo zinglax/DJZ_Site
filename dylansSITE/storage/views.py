@@ -8,6 +8,7 @@ from models import Item
 from django.core.context_processors import csrf
 from django.shortcuts import redirect
 from dylansSITE.settings import STATIC_ROOT
+from django.db.models import Q
 import djqscsv
 
 # passed into page responses used for static variables that might change in the future such as the site address
@@ -131,7 +132,16 @@ def add(request, bar_code):
         return render_to_response("storage/item.html",script_args)        
 
 def search(request):
-    #areas = Item.objects.all().filter(parent_item__isnull=True)
+
+    if "search" in request.GET:
+        search = request.GET["search"]
+        
+        
+        # Get the items that have the search in the name and or description
+        script_args['results'] = Item.objects.all().filter((Q(name__icontains=search)|Q(description__icontains=search))| (Q(name__icontains=search)&Q(description__icontains=search)))
+    else:
+        script_args['results'] = False
+        
     script_args['areas'] = Item.objects.all()
     return render_to_response("storage/search.html",script_args)
 

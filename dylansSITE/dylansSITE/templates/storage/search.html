@@ -1,11 +1,43 @@
 {% extends "storage/base.html" %}
 {% block content %}
+
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
 <h1>Search<h1>
 
-  <div data-role="main" class="ui-content">
+    <form method="get" action="/storage/search/">
+      <div class="ui-field-contain">
+        <input type="search" name="search" id="search" placeholder="Search for content...">
+      </div>
+      <input type="submit" data-inline="true" value="Submit">
+    </form> 
+
+{% if results %}
+<div data-role="collapsible">
+<h1>Results</h1>
+
+<div data-role="collapsibleset">
+{% for result in results %}    
+<div data-role="collapsible">
+  <h3>{{ result.name }}</h3>
+  <p>{{ result.description }}</p>
+  <a href="/storage/{{ result.barcode }}" class="ui-btn">Go To Page</a>
+  
+  
+</div>
+
+{% endfor %}
+
+
+</div>
+</div>
+
+{% endif %}
+</div>
+
+</br>
+
   <div data-role="collapsible">
-        <h3>Areas</h3>
-        <p>Here are all of the Storage Areas</p>
+        <h3>All Items</h3>
       
     <div data-role="collapsibleset">
     
@@ -21,7 +53,7 @@
       
     </div>
   </div>
-  </div>
+
 
 
 
