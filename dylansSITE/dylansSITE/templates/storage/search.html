@@ -20,7 +20,7 @@
 <div data-role="collapsible">
   <h3>{{ result.name }}</h3>
   <p>{{ result.description }}</p>
-  <a href="/storage/{{ result.barcode }}" class="ui-btn">Go To Page</a>
+  <a href="/storage/{{ result.barcode }}" class="ui-btn ui-icon-forward ui-corner-all ui-btn-icon-notext">Go To Page</a>
   
   
 </div>
@@ -47,6 +47,8 @@
         <h3>{{ item.name }}</h3>
         
         <p>{{ item.description }}</p>
+        <a href="/storage/{{ item.barcode }}" class="ui-btn ui-icon-forward ui-corner-all ui-btn-icon-notext">Go To Page</a>
+
       </div>
       
       {% endfor %}
