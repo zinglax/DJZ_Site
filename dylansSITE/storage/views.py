@@ -8,6 +8,7 @@ from models import Item
 from django.core.context_processors import csrf
 from django.shortcuts import redirect
 from dylansSITE.settings import STATIC_ROOT
+import djqscsv
 
 # passed into page responses used for static variables that might change in the future such as the site address
 script_args = {}
@@ -159,4 +160,6 @@ def item(request, bar_code):
         script_args.update(csrf(request))        
         return render_to_response("storage/item.html",script_args)
   
-  
+def export(request):
+    qs = Item.objects.all()
+    return djqscsv.render_to_csv_response(qs)

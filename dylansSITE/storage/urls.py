@@ -16,4 +16,7 @@ urlpatterns = patterns('storage.views',
 
     # Item
     url(r'^(?P<bar_code>DJZ\d+)/$', 'item', name='item'),
+    
+    # Export Database
+    url(r'^export', 'export', name='export'),
 )
