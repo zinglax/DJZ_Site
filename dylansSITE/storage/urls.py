@@ -19,4 +19,8 @@ urlpatterns = patterns('storage.views',
     
     # Export Database
     url(r'^export', 'export', name='export'),
+    
+    # About
+    url(r'^about', 'about', name='about'),
+    
 )

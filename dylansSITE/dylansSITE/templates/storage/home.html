@@ -1,11 +1,62 @@
 {% extends "storage/base.html" %}
 {% block content %}
 
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
+<h1>The Storage System</h1>
+<p> This is a storage system used to keep track of where your things are located based on a QR code scanning process.  This site is meant to be used by mobile devices with the pic2shop barcode scanning application installed. For more information on how to use the system checkout the <a href="{% url 'about' %}">About Page (Click Here)</a>. Hope you find it useful! </p>
+
+</div>
+</br>
+
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
+<h1>Items</h1>
+<div data-role="collapsible">
+      <h3>Top Level Items (Not Contained)</h3>
+<div data-role="collapsibleset">
+
+  {% for item in top %}    
+
+  <div data-role="collapsible">
+    <h3>{{ item.name }}</h3>
+    
+    <p>{{ item.description }}</p>
+    <a href="/storage/{{ item.barcode }}/" class="ui-btn ui-icon-forward ui-corner-all ui-btn-icon-notext">Go To Page</a>
+
+  </div>
+  
+  {% endfor %}
+  
+</div>
+</div>
+
+<div data-role="collapsible">
+      <h3>All Items</h3>
+    
+  <div data-role="collapsibleset">
+  
+    {% for item in all %}    
+  
+    <div data-role="collapsible">
+      <h3>{{ item.name }}</h3>
+      
+      <p>{{ item.description }}</p>
+      <a href="/storage/{{ item.barcode }}/" class="ui-btn ui-icon-forward ui-corner-all ui-btn-icon-notext">Go To Page</a>
+
+    </div>
+    
+    {% endfor %}
+    
+  </div>
+</div>
+
+
+</div>
+</br>
 
 <div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
 <h1>Functionality</h1>
 
 <a href="{% url 'export' %}" class="ui-btn">Export CSV of Database</a>
-
+</div>
 
 {% endblock %}

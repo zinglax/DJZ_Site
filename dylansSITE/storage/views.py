@@ -27,6 +27,13 @@ def get_or_none(model, **kwargs):
         return None
     
 def storage(request):   
+    
+    # Items with out a parent
+    script_args['top'] = Item.objects.filter(parent=None)
+    
+    # All Items
+    script_args["all"] = Item.objects.all()
+    
     # Gets the qrcode value    
     qr = request.GET.get('qr', '')
     
@@ -191,3 +198,7 @@ def item(request, bar_code):
 def export(request):
     qs = Item.objects.all()
     return djqscsv.render_to_csv_response(qs)
+
+def about(request):
+    return render_to_response("storage/about.html",script_args)
+    

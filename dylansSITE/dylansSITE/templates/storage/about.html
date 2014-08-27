@@ -1,0 +1,54 @@
+{% extends "storage/base.html" %}
+{% block content %}
+<h1>About</h1>
+
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
+<h2>Navigation Icons</h2>
+
+<a href="#l" data-rel="popup" class="ui-btn ui-icon-tag ui-btn-inline ui-corner-all ui-btn-icon-notext">Show Popup</a>
+
+<div data-role="popup" id="l">
+  <p>This is the home page of the storage system. Here you can export the database to a CSV file, look up items without a containter, and view all the items currently in the database</p>
+</div>
+
+<a href="#search" data-rel="popup" class="ui-btn ui-icon-search ui-btn-inline ui-corner-all ui-btn-icon-notext">Show Popup</a>
+
+<div data-role="popup" id="search">
+  <p>Use this page to search for items</p>
+</div>
+
+<a href="#pic" data-rel="popup" class="ui-btn ui-icon-camera ui-btn-inline ui-corner-all ui-btn-icon-notext">Show Popup</a>
+
+<div data-role="popup" id="pic">
+  <p>This button is used to scan an individual item.  If the barcode you scan has not been entered into the database yet it will bring you to the add page.  If the item is in the database it will bring you to that items page.</p>
+</div>
+
+<a href="#updater" data-rel="popup" class="ui-btn ui-icon-refresh ui-btn-inline ui-corner-all ui-btn-icon-notext">Show Popup</a>
+
+<div data-role="popup" id="updater">
+  <p>This Button will bring you to the update page.  Scan the new parent item, then all the items inside (its children) then the parent item again to update the database</p>
+</div>
+
+
+
+</div>
+</br>
+
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
+<h2>Adding Process</h2>
+
+
+</div>
+</br>
+
+<div data-role="content" data-theme="{{ theme }}" class="ui-body ui-corner-all ui-overlay-shadow">
+<h2>Updating Process</h2>
+
+
+
+</div>
+</br>
+
+
+
+{% endblock %}
