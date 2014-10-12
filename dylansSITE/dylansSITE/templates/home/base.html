@@ -15,11 +15,24 @@
 	
 </head>
 
+<style type="text/css">
+body {
+    background: url({% static "./images/dylansmallwhite.png" %});
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-attachment: fixed;
+    
+}
+
+.ui-page, .ui-content, .ui-btn {
+	background: transparent;
+}
+</style>
 
 
-<body>
+<body >
 
-<div data-role="page" id="home" data-theme="b">
+<div data-role="page" id="home" data-theme="b" style="background-image: url("{% static "./images/dylanwhite.png" %}"); background-attachment: fixed; background-repeat: no-repeat; background-size: 100% 100%;>
 
   <!-- Nav Panel -->
   <div data-role="panel" id="overlayPanel" data-display="overlay"> 
@@ -50,7 +63,7 @@
   lang: en_US
 </script>
 <script type="IN/FollowCompany" data-id="266573023" data-counter="none"></script> 
-    
+   
   </div> 
 
   <!-- Nav Header  -->
