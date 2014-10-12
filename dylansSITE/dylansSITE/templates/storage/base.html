@@ -2,6 +2,7 @@
 {% load staticfiles %}
 
 
+
 <head>
 <title>Storage</title>
 <link rel="stylesheet" href="{% static "storage/themes/dylan.min.css"%}" />
@@ -23,6 +24,20 @@
 
 	
 </head>
+
+<style type="text/css">
+body {
+    background: url({% static "./images/boxsmall.png" %});
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-attachment: fixed;
+    
+}
+
+.ui-page,  .ui-btn {
+	background: transparent;
+}
+</style>
 
 <body>
 
