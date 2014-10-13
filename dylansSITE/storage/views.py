@@ -13,7 +13,7 @@ import djqscsv
 
 # passed into page responses used for static variables that might change in the future such as the site address
 script_args = {}
-script_args['site_url'] = 'http%3A//192.168.1.19:4848'
+script_args['site_url'] = 'http%3A//dylanzingler.com'
 
 # CSS them for the site
 script_args['theme'] = 'a'
