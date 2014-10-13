@@ -11,7 +11,7 @@ from dylansSITE.settings import PATH_TO_FILE
 
 import storage.views as StorageViews
 
-pages = ['resume','mobilewebpractice', 'storage']
+pages = ['resume','mobilewebpractice', 'storage', 'blobs']
 
 def home(request):
   print PATH_TO_FILE + "/media/site_pictures/D.jpg"

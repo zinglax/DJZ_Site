@@ -13,7 +13,8 @@ urlpatterns = patterns('',
     url(r'^mobilewebpractice', 'home.views.mobilewebpractice',name='mobilewebpractice'),
     url(r'^resume', 'home.views.resume',name='resume'),
     url(r'^storage/', include('storage.urls')),
-
+    url(r'^blobs/', include('blobs.urls')),
+    
 
 
     # Uncomment the admin/doc line below to enable admin documentation:
