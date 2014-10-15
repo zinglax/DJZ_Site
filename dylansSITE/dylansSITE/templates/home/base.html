@@ -24,6 +24,13 @@ body {
     
 }
 
+.ui-header, .ui-footer {
+    
+    background: url({% static "./images/funky.gif" %});
+    background-repeat: repeat-x, repeat-y;
+    background-position: left top;
+    
+}
 .ui-page, .ui-content, .ui-btn {
 	background: transparent;
 }
@@ -70,7 +77,9 @@ body {
   <div data-role="header" data-position="fixed" data-fullscreen="true">
   <a href="#overlayPanel" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="bars" data-iconpos="notext"></a>
   <a href="/" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="home" data-iconpos="notext"></a>
-    <h1>D. J. Z.</h1>
+    
+    <img src="{% static "./images/dylan_small_text.gif" %}" hspace="40" alt="My image"/>
+
   </div><br><br>
 
 {% block content %}

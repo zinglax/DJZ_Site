@@ -1,0 +1,91 @@
+<html>
+{% load staticfiles %}
+
+
+<head>
+<title>Blobs</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">	
+
+<link rel="stylesheet" href="{% static "storage/themes/dylan.min.css"%}" />
+<link rel="stylesheet" href="{% static "storage/themes/jquery.mobile.icons.min.css"%}" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	
+</head>
+
+<style type="text/css">
+body {
+    background: url({% static "./images/dylansmallwhite.png" %});
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-attachment: fixed;
+    
+}
+
+.ui-header, .ui-footer {
+    
+    background: url({% static "./images/funkybanner.gif" %});
+    background-repeat: repeat-x, repeat-y;
+    background-position: left top;
+    
+}
+
+.ui-page, .ui-content, .ui-btn {
+	background: transparent;
+}
+</style>
+
+
+<body >
+
+<div data-role="page" id="home" data-theme="b" style="background-image: url("{% static "./images/dylanwhite.png" %}"); background-attachment: fixed; background-repeat: no-repeat; background-size: 100% 100%;>
+
+  <!-- Nav Panel -->
+  <div data-role="panel" id="overlayPanel" data-display="overlay"> 
+    <h2>Navigation</h2>    
+    <div data-role="controlgroup" data-type="vertical">
+      
+      {% for page in pages %}
+      <a href="{{ page }}" class="ui-btn">{{ page }}</a>
+      {% endfor %}
+
+    </div>  
+    
+    <h2>Links</h2>
+    
+    <div data-role="controlgroup" data-type="vertical">
+      <a href="https://www.linkedin.com/profile/view?id=266573023&trk=nav_responsive_tab_profile_pic" class="ui-btn">Linkedin</a>
+      <a href="https://github.com/zinglax" class="ui-btn">GitHub</a>
+      <a href="https://twitter.com/Zinglax" class="ui-btn">Twitter</a>
+      <a href="http://mobileappdevelopersclub.com/" class="ui-btn">M.A.D.</a>
+      <a href="https://www.facebook.com/dylan.zingler" class="ui-btn">Facebook</a>
+      <a href="https://plus.google.com/+DylanZingler/" class="ui-btn">Google+</a>
+
+
+    </div>
+    
+    
+    <script src="//platform.linkedin.com/in.js" type="text/javascript">
+  lang: en_US
+</script>
+<script type="IN/FollowCompany" data-id="266573023" data-counter="none"></script> 
+   
+  </div> 
+
+  <!-- Nav Header  -->
+  <div data-role="header" data-position="fixed" data-fullscreen="true">
+  <a href="#overlayPanel" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="bars" data-iconpos="notext"></a>
+  <a href="/" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="home" data-iconpos="notext"></a>
+    <h1>Blobs</h1>
+  </div><br><br>
+
+{% block content %}
+{% endblock %}
+  
+</div>
+
+</body>
+
+</html>

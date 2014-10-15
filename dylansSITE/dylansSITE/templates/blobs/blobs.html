@@ -1,0 +1,30 @@
+{% extends "blobs/base.html" %}
+{% block content %}
+{% load staticfiles %}
+
+<h1>Here are the blobs</h1>
+
+<div data-role="collapsible">
+      <h3>Top Level Items (Not Contained)</h3>
+<div data-role="collapsibleset">
+
+  {% for blob in blobs %}    
+
+  <div data-role="collapsible">
+    <h3>{{ blob.name }}</h3>
+    
+    <p>{{ blob.description }}</p>
+
+  </div>
+  
+  {% endfor %}
+  
+</div>
+</div>
+
+
+
+
+
+
+{% endblock %}

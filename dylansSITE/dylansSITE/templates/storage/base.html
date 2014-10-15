@@ -28,15 +28,15 @@
 <style type="text/css">
 body {
     background: url({% static "./images/boxsmall.png" %});
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    background-attachment: fixed;
+    background-repeat: repeat-y;
+    background-position: left top;  
+    background-attachment: scroll ;
     
 }
 
 .ui-header, .ui-footer {
     
-    background: url({% static "./images/interesting.gif" %});
+    background: url({% static "./images/cardboard.png" %});
     background-repeat: repeat-x, repeat-y;
     background-position: left top;
     
@@ -44,6 +44,14 @@ body {
 
 .ui-page,  .ui-btn {
 	background: transparent;
+}
+
+.ui-icon-myicon:after {
+	background-image: url({% static "./images/shellp_3small.gif" %});
+}
+/* Fallback */
+.ui-nosvg .ui-icon-myicon:after {
+	background-image: url({% static "./images/shellp_3small.gif" %});
 }
 </style>
 
@@ -56,7 +64,6 @@ body {
     <a href="/" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="home" data-iconpos="notext"></a>
 
     <h1>D. J. Z. Storage</h1>
-    <img src="{% static "./images/shellp_3small.gif" %}" alt="My image"/>
 
   </div><br><br>
 
@@ -66,7 +73,7 @@ body {
   <!-- Nav Footer  -->
 <br><br>
   <div data-role="footer" data-position="fixed" data-fullscreen="true">
-  <a href="/storage" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Tag" data-iconpos="notext"></a>
+  <a href="/storage" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="myicon" data-iconpos="notext"></a>
   <a href="{% url 'search' %}" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Search" data-iconpos="notext"></a>
   <a href="pic2shop://scan?callback={{ site_url }}/storage/" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="camera" data-iconpos="notext"></a>
   <a href="{% url 'update' %}" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="Recycle" data-iconpos="notext"></a>
