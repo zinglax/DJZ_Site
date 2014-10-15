@@ -2,19 +2,11 @@
 {% block content %}
 {% load staticfiles %}
 
-<h1>Here is some art that I do...</h1>
- <img src="{% static "./images/dylanwhite.png" %}" alt="My image"/>
- <img src="{% static "./images/boxsmall.png" %}" alt="My image"/>
- <img src="{% static "./images/shellp_icon.png" %}" alt="My image"/>
- <img src="{% static "./images/shellp.png" %}" alt="My image"/>
- <img src="{% static "./images/interesting.gif" %}" alt="My image"/>
- <img src="{% static "./images/shellp_3.gif" %}" alt="My image"/>
- <img src="{% static "./images/shellp_3small.gif" %}" alt="My image"/>
- <img src="{% static "./images/shellp_icon.gif" %}" alt="My image"/>
- <img src="{% static "./images/update_site.png" %}" alt="My image"/>
+<h1>Look. Bad. Art.</h1>
 
-
-
+{% for image in images %}    
+   <img src="{% static image %}" alt="My image"/>
+{% endfor %}
 
 
 {% endblock %}

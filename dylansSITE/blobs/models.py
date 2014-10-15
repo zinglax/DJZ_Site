@@ -16,13 +16,11 @@ class Blob(models.Model):
     description = models.CharField(max_length=500, blank=True, null=True) 
     
     # Parent of Blob 
-    parent = models.ForeignKey('self', blank=True, null=True,on_delete=models.SET_NULL, )
+    parent = models.ForeignKey('self', related_name="father", blank=True, null=True,on_delete=models.SET_NULL, )
 
-    # Barcode Label ex. DJZ128
-    barcode = models.CharField(max_length=150)
+    # The type of blob object
+    blobject = models.ForeignKey('self', related_name="object", blank=True, null=True,on_delete=models.SET_NULL, )
 
-    # Number of times this item has 
-    hit_count = models.IntegerField(blank=True, null=True)
-    
+
     def __unicode__(self):        
         return self.name  
