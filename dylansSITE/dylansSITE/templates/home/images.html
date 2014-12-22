@@ -1,0 +1,14 @@
+{% extends "home/base.html" %}
+{% block content %}
+{% load staticfiles %}
+
+
+<h1>All images are loaded programatically</h1>
+
+
+{% for i in img_files %}    
+   <img src="{% static i %}" alt="My image"/>
+{% endfor %}
+
+
+{% endblock %}

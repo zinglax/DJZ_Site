@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', 'home.views.home', name='home'),
     url(r'^mobilewebpractice', 'home.views.mobilewebpractice',name='mobilewebpractice'),
     url(r'^resume', 'home.views.resume',name='resume'),
+    url(r'^images', 'home.views.images',name='images'),
     url(r'^storage/', include('storage.urls')),
     url(r'^blobs/', include('blobs.urls')),
     

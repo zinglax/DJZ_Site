@@ -13,27 +13,31 @@ from dylansSITE.settings import PATH_TO_FILE
 
 import storage.views as StorageViews
 
-pages = ['resume','mobilewebpractice', 'storage', 'blobs']
+# List of navigable pages, add new pages to this list for nav pannel
+pages = ['resume','mobilewebpractice', 'storage', 'blobs','images']
 script_args = {}
 script_args['pages'] = pages
 
 def home(request):
+  return render_to_response("home/home.html", script_args)
+
+def images(request):
   imagefolder = PATH_TO_FILE + '/static/images'
   
-  # Files in image folder, thanks stack overflow
+  # Files in image folder
   onlyfiles = [ f for f in listdir(imagefolder) if isfile(join(imagefolder,f)) ]  
   
   # Finding the images
-  images = []
+  img_files = []
   for f in onlyfiles:
     print f
     if (f[-4:] == ".gif") or (f[-4:] == ".jpg") or (f[-4:] == ".png"):
       f = "images/" + f
-      images.append(f)
-  print images
+      img_files.append(f)
+  print img_files
   
-  script_args['images'] = images
-  return render_to_response("home/home.html", script_args)
+  script_args['img_files'] = img_files
+  return render_to_response("home/images.html", script_args)
 
 def mobilewebpractice(request):
   return render_to_response("home/mobilewebpractice.html", script_args)
