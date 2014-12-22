@@ -7,23 +7,26 @@
 <div data-role="collapsible">
       <h3>Every Thing That Ever Hung...</h3>
 <div data-role="collapsibleset">
-
-  {% for hanger in blobs %}    
-
+  {% for hanger in hangers %}    
   <div data-role="collapsible">
     <h3>{{ hanger.name }}</h3>
-    
-    <p>{{ hanger.description }}</p>
-
   </div>
-  
   {% endfor %}
-  
 </div>
 </div>
 
 
-
+<div data-role="collapsible">
+      <h3>Every Thing That Ever Hung...</h3>
+<div data-role="collapsibleset">
+  {% for string in strings %}    
+  <div data-role="collapsible">
+    <h3>{{ string.data }}</h3>
+    <p>{{ string.hung_on }}</p>
+  </div>
+  {% endfor %}
+</div>
+</div>
 
 
 

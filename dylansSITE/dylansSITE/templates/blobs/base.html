@@ -26,7 +26,7 @@ body {
 
 .ui-header, .ui-footer {
     
-    background: url({% static "./images/funkybanner.gif" %});
+    background: url({% static "./images/pirateship.gif" %});
     background-repeat: repeat-x, repeat-y;
     background-position: left top;
     
@@ -40,7 +40,7 @@ body {
 
 <body >
 
-<div data-role="page" id="home" data-theme="b" style="background-image: url("{% static "./images/dylanwhite.png" %}"); background-attachment: fixed; background-repeat: no-repeat; background-size: 100% 100%;>
+<div data-role="page" id="home" data-theme="{{ theme }}" style="background-image: url("{% static "./images/dylanwhite.png" %}"); background-attachment: fixed; background-repeat: no-repeat; background-size: 100% 100%;>
 
   <!-- Nav Panel -->
   <div data-role="panel" id="overlayPanel" data-display="overlay"> 
