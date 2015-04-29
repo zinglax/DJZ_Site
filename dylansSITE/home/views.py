@@ -43,7 +43,16 @@ def mobilewebpractice(request):
   return render_to_response("home/mobilewebpractice.html", script_args)
 
 def resume(request):
-  return render_to_response("home/resume.html",script_args)
+  
+  
+  #response = HttpResponse(mimetype='application/force-download')
+  #response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(file_name)
+  #response['X-Sendfile'] = smart_str(path_to_file)  
+  
+  
+  
+  
+  return render_to_response("home/Resume.html",script_args)
 
 
 def serve_pdf(request):
