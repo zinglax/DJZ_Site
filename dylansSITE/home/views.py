@@ -11,18 +11,39 @@ from models import *
 from django.conf import settings
 from dylansSITE.settings import PATH_TO_FILE
 
+from random import randint
+
 import storage.views as StorageViews
 
 # List of navigable pages, add new pages to this list for nav pannel
-pages = ['resume','mobilewebpractice', 'storage', 'blobs','images']
+pages = ['storage','images','photobooth']
 script_args = {}
 script_args['pages'] = pages
 
+# Random theme 
+themes = ['a','b','c','d','e','f']
+#script_args['theme'] = themes[randint(0, len(themes)-1)]
+
 def home(request):
+  
+  script_args['theme'] = themes[randint(0, len(themes)-1)]
+
+  # Favicon
+  favicon = 'images/favicon.ico'
+  script_args['favicon'] = favicon
+  
+  # Resume
+  script_args['resume'] = 'Resume.pdf'
+  
   return render_to_response("home/home.html", script_args)
 
+def photobooth(request):
+  
+  return render_to_response("home/index.html", script_args)
+
 def images(request):
-  imagefolder = PATH_TO_FILE + '/static/images'
+  
+  imagefolder = PATH_TO_FILE + '/static/images'  
   
   # Files in image folder
   onlyfiles = [ f for f in listdir(imagefolder) if isfile(join(imagefolder,f)) ]  
@@ -39,30 +60,10 @@ def images(request):
   script_args['img_files'] = img_files
   return render_to_response("home/images.html", script_args)
 
-def mobilewebpractice(request):
-  return render_to_response("home/mobilewebpractice.html", script_args)
-
-def resume(request):
-  
-  
-  #response = HttpResponse(mimetype='application/force-download')
-  #response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(file_name)
-  #response['X-Sendfile'] = smart_str(path_to_file)  
-  
-  
-  
-  
-  return render_to_response("home/Resume.html",script_args)
+#def mobilewebpractice(request):
+  #return render_to_response("home/mobilewebpractice.html", script_args)
 
 
-def serve_pdf(request):
-    #pdf_data = magically_create_pdf()
-
-    response = HttpResponse(mimetype='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="/media/ITresmue.pdf"'
-    response['X-Sendfile'] = "/media/ITresmue.pdf"
-    
-    return response
   
 def storage(request):
   return StorageViews.storage(request);

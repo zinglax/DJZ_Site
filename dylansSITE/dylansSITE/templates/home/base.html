@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+ 
+<link rel="shortcut icon" type="image/png" href="{% static './images/drawing.png' %}"/>
 	
 </head>
 
@@ -26,11 +28,15 @@ body {
 
 .ui-header, .ui-footer {
     
-    background: url({% static "./images/funky.gif" %});
+    background: url({% static "./images/blackgradient.png" %});
     background-repeat: repeat-x, repeat-y;
     background-position: left top;
+    border-bottom:0px
+    
     
 }
+
+
 .ui-page, .ui-content, .ui-btn {
 	background: transparent;
 }
@@ -39,15 +45,16 @@ body {
 
 <body >
 
-<div data-role="page" id="home" data-theme="b" style="background-image: url("{% static "./images/dylanwhite.png" %}"); background-attachment: fixed; background-repeat: no-repeat; background-size: 100% 100%;>
+<div data-role="page" id="home" data-theme="{{ theme }}" style="background-image: url("{% static "./images/dylanwhite.png" %}"); background-attachment: fixed; background-repeat: no-repeat; background-size: 100% 100%;>
 
   <!-- Nav Panel -->
   <div data-role="panel" id="overlayPanel" data-display="overlay"> 
     <h2>Navigation</h2>    
-    <div data-role="controlgroup" data-type="vertical">
+    <div data-role="controlgroup" data-type="vertical" data-ajax="false">
       
+      <a href="{% static resume %}" class="ui-btn" rel="external">Resume</a>
       {% for page in pages %}
-      <a href="{{ page }}" class="ui-btn">{{ page }}</a>
+      <a href="{{ page }}" class="ui-btn" rel="external">{{ page }}</a>
       {% endfor %}
 
     </div>  
@@ -57,8 +64,7 @@ body {
     <div data-role="controlgroup" data-type="vertical">
       <a href="https://www.linkedin.com/profile/view?id=266573023&trk=nav_responsive_tab_profile_pic" class="ui-btn">Linkedin</a>
       <a href="https://github.com/zinglax" class="ui-btn">GitHub</a>
-      <a href="https://twitter.com/Zinglax" class="ui-btn">Twitter</a>
-      <a href="http://mobileappdevelopersclub.com/" class="ui-btn">M.A.D.</a>
+      <a href="https://twitter.com/Zinglax" class="ui-btn">Twitter</a>      
       <a href="https://www.facebook.com/dylan.zingler" class="ui-btn">Facebook</a>
       <a href="https://plus.google.com/+DylanZingler/" class="ui-btn">Google+</a>
 
@@ -75,10 +81,13 @@ body {
 
   <!-- Nav Header  -->
   <div data-role="header" data-position="fixed" data-fullscreen="true">
+  
   <a href="#overlayPanel" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="bars" data-iconpos="notext"></a>
+  
   <a href="/" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc" data-icon="home" data-iconpos="notext"></a>
     
-    <img src="{% static "./images/dylan_small_text.gif" %}" hspace="40" alt="My image"/>
+    <h1>D. J. Z. Site</h1>
+   
 
   </div><br><br>
 
