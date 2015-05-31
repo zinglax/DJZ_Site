@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     #url(r'^blobs/', include('blobs.urls')),
     
     url(r'^photobooth', 'home.views.photobooth',name='photobooth'),
+    url(r'^voice', 'home.views.voice',name='voice'),
     
 
 

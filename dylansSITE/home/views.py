@@ -16,7 +16,7 @@ from random import randint
 import storage.views as StorageViews
 
 # List of navigable pages, add new pages to this list for nav pannel
-pages = ['storage','images','photobooth']
+pages = ['storage','images','photobooth', 'voice']
 script_args = {}
 script_args['pages'] = pages
 
@@ -40,6 +40,10 @@ def home(request):
 def photobooth(request):
   
   return render_to_response("home/index.html", script_args)
+
+def voice(request):
+  return render_to_response("home/voice.html", script_args)
+
 
 def images(request):
   
