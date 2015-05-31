@@ -1,24 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "home/base.html" %}
+{% block content %}
 {% load staticfiles %}
-    <head>
-        <meta charset="UTF-8">
-        <title>Dylans Photobooth</title>
-        
-        <link rel="stylesheet" href="{% static "css/main.css" %}">
-    </head>
-    <body>
+      
+           
 
         <div class="booth">
-            <video id="video" width="400" height="300" autoplay></video>
+            <video id="video" width="400"  height="300" autoplay></video>
             <button id="snap">Snap Photo</button>
-            <canvas id="canvas" width="400" height="300"></canvas>
+            <canvas id="canvas" width="400"  height="300"></canvas>
         </div>
 
 
         <script src="{% static "js/video.js" %}"></script>
 
 
-
-    </body>
-</html>
+{% endblock %}
