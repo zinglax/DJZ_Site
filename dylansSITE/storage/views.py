@@ -15,6 +15,8 @@ import djqscsv
 script_args = {}
 script_args['site_url'] = 'http%3A//dylanzingler.com'
 
+script_args['site_url'] = 'http%3A//192.168.1.25:8000'
+
 # CSS them for the site
 script_args['theme'] = 'a'
 

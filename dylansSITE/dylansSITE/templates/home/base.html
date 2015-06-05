@@ -51,8 +51,27 @@ body {
 
   <!-- Nav Panel -->
   <div data-role="panel" id="overlayPanel" data-display="overlay"> 
+  
+	{% if not user.is_authenticated %}
+	<h2>Login</h2>
+	<form id="login_form" method="post" action="/login/" data-ajax="false" >
+	    {% csrf_token %}
+	    Username: <input type="text" name="username" value="" data-mini="true"/>
+	    
+	    Password: <input type="password" name="password" value=""  data-mini="true"/>
+	    
+
+	    <input type="submit" value="submit" data-mini="true"/>
+	</form>
+	{% else %}
+	<h2>Hello {{ user.username }},</h2>
+	<div data-role="controlgroup" data-type="vertical" data-ajax="false" data-mini="true">
+	<a href="/logout/" class="ui-btn" rel="external">Logout</a>
+	</div>
+	{% endif %}
+      
     <h2>Navigation</h2>    
-    <div data-role="controlgroup" data-type="vertical" data-ajax="false">
+    <div data-role="controlgroup" data-type="vertical" data-ajax="false" data-mini="true">
       
       <a href="{% static resume %}" class="ui-btn" rel="external">Resume</a>
       {% for page in pages %}
@@ -63,7 +82,7 @@ body {
     
     <h2>Links</h2>
     
-    <div data-role="controlgroup" data-type="vertical">
+    <div data-role="controlgroup" data-type="vertical" data-mini="true">
       <a href="https://www.linkedin.com/profile/view?id=266573023&trk=nav_responsive_tab_profile_pic" class="ui-btn">Linkedin</a>
       <a href="https://github.com/zinglax" class="ui-btn">GitHub</a>
       <a href="https://twitter.com/Zinglax" class="ui-btn">Twitter</a>      
@@ -91,6 +110,7 @@ body {
     <h1>D. J. Z. Site</h1>
    
 
+  
   </div>
 
 {% block content %}
