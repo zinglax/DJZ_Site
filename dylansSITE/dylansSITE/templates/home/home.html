@@ -4,5 +4,14 @@
 
 <h1>Welcome to the Home page of Dylan Zingler</h1>
 
+{% if user.is_authenticated %}
+<h2>Your are logged in as {{ user.username }}</h2>
+<a href="/restricted/">Restricted Page</a><br />
+<a href="/logout/">Logout</a><br />
+{% else %}    
+<a href="/register/">Register Here</a>
+<a href="/login/">Login</a>
+{% endif %} 
+ 
 
 {% endblock %}

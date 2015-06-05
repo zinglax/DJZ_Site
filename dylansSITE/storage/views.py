@@ -45,6 +45,7 @@ def storage(request):
     else:
         return redirect('/storage/' + qr + "/")
 
+
 def update(request):
     # Gets the qrcode value    
     qr = request.GET.get('qr', '')
