@@ -194,3 +194,9 @@ def user_logout(request):
 
   # Take the user back to the homepage.
   return HttpResponseRedirect('/')
+
+def custom_404(request):
+  return render_to_response('home/404.html', RequestContext(request))
+
+def custom_500(request):
+  return render_to_response('home/500.html', RequestContext(request))

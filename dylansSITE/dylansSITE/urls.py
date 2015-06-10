@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^restricted/', 'home.views.restricted', name='restricted'),
     url(r'^logout/$', 'home.views.user_logout', name='logout'),
 
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
@@ -31,3 +32,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     
 )+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = 'home.views.custom_404'
+handler500 = 'home.views.custom_500'

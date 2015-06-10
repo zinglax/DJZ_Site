@@ -18,14 +18,14 @@
 </head>
 
 <style type="text/css">
-body {
-    background: url({% static "./images/dylansmallwhite.png" %});
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    background-attachment: fixed;
+<!--body {-->
+    <!--background: url({% static "./images/dylansmallwhite.png" %});-->
+    <!--background-repeat: no-repeat;-->
+    <!--background-position: left bottom;-->
+    <!--background-attachment: fixed;-->
     
     
-}
+<!--}-->
 
 .ui-header, .ui-footer {
     
@@ -44,10 +44,68 @@ body {
 }
 </style>
 
+<script>
+
+@winheight:`$(window).height()`;
+@winwidth:`$(window).width()`;
+
+</script>
+<style>
+@-webkit-keyframes spin {
+ 0% {
+   -webkit-transform: rotateY(90deg);
+ }
+ 100% {
+   -webkit-transform: rotateY(-90deg);
+ }
+}
+@-moz-keyframes spin {
+ 0% {
+   -moz-transform: rotateY(90deg);
+ }
+ 100% {
+   -moz-transform: rotateY(-90deg);
+ }
+}
+#oops {
+  text-align: center;
+  margin-top: 7em;
+  -webkit-perspective: 500px;
+  -webkit-transform-style: preserves-3d;
+  -moz-perspective: 500px;
+  -moz-transform-style: preserves-3d;
+}
+#oops img {
+  width: 256px;
+  height: 256px;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-delay: 2s;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 5s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-delay: 2s;
+}
+#oops:hover img {
+  -webkit-animation-duration: 5000ms;
+  -moz-animation-duration: 5000ms;
+}
+</style>
+
+
 
 <body >
 
-<div data-role="page" id="home" data-theme="{{ theme }}" style="background-image: url("{% static "./images/dylanwhite.png" %}"); background-attachment: fixed; background-repeat: no-repeat; background-size: 100% 100%;>
+<div data-role="page" id="home" data-theme="{{ theme }}" 
+>
+
+    
+    
+    <div id="oops">
+    <img src="{% static "./images/sign_construction.png" %}">
+    </div>
 
   <!-- Nav Panel -->
   <div data-role="panel" id="overlayPanel" data-display="overlay"> 
