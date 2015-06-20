@@ -1,0 +1,22 @@
+{% extends "home/base.html" %}
+{% block content %}
+{% load staticfiles %}
+
+<h1>Payments<h1>
+
+<form action="" method="POST">
+{% csrf_token %}
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_wGdOnYU7xw3DBYvNXQXG6gxK"
+    data-amount="1599"
+    data-name="Dylan Zingler Site"
+    data-description="2 widgets ($15.99)"
+    data-image="{% static "./images/orange_spider.png" %}">
+  </script>
+</form>
+
+
+
+
+{% endblock %}
