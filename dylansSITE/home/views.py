@@ -221,8 +221,11 @@ def custom_500(request):
   return render_to_response('home/500.html', RequestContext(request))
 
 
+
 @csrf_exempt
 def payments(request):
+  
+  context = RequestContext(request)
   
   
   # Set your secret key: remember to change this to your live secret key in production
@@ -250,13 +253,13 @@ def payments(request):
           source=token,
           description="TEST CHARGE FROM DYLAN ZINGLER"
       )
-      return render_to_response('home/payments.html', script_args)
+      #return render_to_response('home/payments.html', script_args, context)
     except stripe.error.CardError, e:
       # The card has been declined
       pass
   
   
   
-  return render_to_response('home/payments.html', script_args)
+  return render_to_response('home/payments.html', script_args, context)
 
 
