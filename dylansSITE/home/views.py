@@ -12,6 +12,8 @@ from django.core.context_processors import csrf
 
 from django.contrib.auth import logout
 
+# payments
+import stripe
 
 from os import listdir
 from os.path import isfile, join
@@ -23,7 +25,11 @@ from random import randint
 
 from django.contrib.auth.decorators import login_required
 
+from django.views.decorators.csrf import csrf_exempt
+
 import storage.views as StorageViews
+
+import re
 
 # List of navigable pages, add new pages to this list for nav pannel
 pages = ['storage','images','photobooth', 'voice']
@@ -48,6 +54,19 @@ def home(request):
   return render_to_response("home/home.html", script_args, context)
 
 def photobooth(request):
+  
+  print request
+  datauri = request.POST.get('canvasData', '')
+  
+  
+  #imgstr = re.search(r'base64,(.*)', datauri).group(1)
+  
+  #output = open('output.png', 'wb')
+  
+  #output.write(imgstr.decode('base64'))
+  
+  #output.close()  
+  
   
   return render_to_response("home/index.html", script_args)
 
@@ -200,3 +219,44 @@ def custom_404(request):
 
 def custom_500(request):
   return render_to_response('home/500.html', RequestContext(request))
+
+
+@csrf_exempt
+def payments(request):
+  
+  
+  # Set your secret key: remember to change this to your live secret key in production
+  # See your keys here https://dashboard.stripe.com/account/apikeys
+  stripe.api_key = "sk_test_yw7IZbUI1cFgnCD7balmgyu9"
+  
+  
+  # TEST
+  # Secret: sk_test_yw7IZbUI1cFgnCD7balmgyu9  
+  # Pubish: pk_test_wGdOnYU7xw3DBYvNXQXG6gxK
+  
+  # LIVE
+  # Secret: sk_live_uzSgp2cqSeVMCYVfRiJIat55
+  # Publish: pk_live_NMedpGOUK9zEs5SRyv5RHHjw
+  
+  if request.method == 'POST':
+    # Get the credit card details submitted by the form
+    token = request.POST['stripeToken']
+    
+    # Create the charge on Stripe's servers - this will charge the user's card
+    try:
+      charge = stripe.Charge.create(
+          amount=1599, # amount in cents, again
+          currency="usd",
+          source=token,
+          description="TEST CHARGE FROM DYLAN ZINGLER"
+      )
+      return render_to_response('home/payments.html', script_args)
+    except stripe.error.CardError, e:
+      # The card has been declined
+      pass
+  
+  
+  
+  return render_to_response('home/payments.html', script_args)
+
+

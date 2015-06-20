@@ -24,6 +24,9 @@ urlpatterns = patterns('',
     url(r'^restricted/', 'home.views.restricted', name='restricted'),
     url(r'^logout/$', 'home.views.user_logout', name='logout'),
 
+    # Payments
+    url(r'^payments/$', 'home.views.payments', name='payments'),
+    
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

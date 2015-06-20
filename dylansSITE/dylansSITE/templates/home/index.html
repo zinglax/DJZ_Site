@@ -1,17 +1,17 @@
 {% extends "home/base.html" %}
 {% block content %}
 {% load staticfiles %}
-      
-           
 
-        <div class="booth">
-            <center><video id="video"  autoplay></video><center>
-            <!--<button id="snap">Snap Photo</button>-->
-            <!--<canvas id="canvas" width="400"  height="300"></canvas>-->
-        </div>
+    <div class="booth">
+        <center> 
+            <video id="video" width="400"  height="300" autoplay></video>
+            <button id="snap">Snap Photo</button>
+            <canvas id="canvas" width="400"  height="300"></canvas>
+        </center>
+    </div>
 
 
-        <script src="{% static "js/video.js" %}"></script>
+    <script src="{% static "js/video.js" %}"></script>
 
 
 {% endblock %}

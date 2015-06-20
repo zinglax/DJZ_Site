@@ -17,7 +17,7 @@ debug.launch-configs = (1,
                     ''),
          'pyrunargs': ('project',
                        '-u'),
-         'runargs': u'runserver --noreload 192.168.1.25:8000',
+         'runargs': u'runserver --noreload 8000',
          'rundir': ('project',
                     u'')})})
 proj.directory-list = [{'dirloc': loc('dylansSITE'),
