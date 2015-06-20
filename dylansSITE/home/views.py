@@ -32,7 +32,7 @@ import storage.views as StorageViews
 import re
 
 # List of navigable pages, add new pages to this list for nav pannel
-pages = ['storage','images','photobooth', 'voice']
+pages = ['storage','images','photobooth', 'voice', 'payments']
 script_args = {}
 script_args['pages'] = pages
 
